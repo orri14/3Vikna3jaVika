@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
+using MovieSearch.Model;
 using Xamarin.Forms;
 
 namespace MovieSearch
@@ -11,9 +12,12 @@ namespace MovieSearch
     {
         public App()
         {
-            InitializeComponent();
+             this.InitializeComponent();
 
-            MainPage = new MovieSearch.MainPage();
+            //The root page of the application
+            var content = new SearchPage(new Movies());
+
+            MainPage = new NavigationPage(content);
         }
 
         protected override void OnStart()

@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MovieSearch.Model
 {
     public class Movies
     {
         private List<FilmInfo> _movies;
+        private ApiService _apiService;
 
         public Movies()
         {
             this._movies = new List<FilmInfo>();
+            this._apiService = new ApiService();
         }
 
         public List<FilmInfo> FilmInfos => this._movies;
@@ -23,16 +26,18 @@ namespace MovieSearch.Model
             this._movies.Clear();
         }
 
-        public void loadMoviesByTitle(string title)
+        public async Task loadMoviesByTitle(string title)
         {
             clearMovies();
-            //TODO call API service and add search results to _movies
+            List<FilmInfo> results = await _apiService.getMoviesByTitle(title);
+            _movies.AddRange(results);
         }
 
-        public void loadMoviesByTopRated()
+        public async Task loadMoviesByTopRated()
         {
             clearMovies();
-            //TODO: call API service and add top rated movies to _movies
+            List<FilmInfo> results = await _apiService.getTopRatedMovies();
+            _movies.AddRange(results);
         }
     }
 }
