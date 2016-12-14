@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace MovieSearch.Model
 {
@@ -15,7 +16,7 @@ namespace MovieSearch.Model
         }
 
         public List<FilmInfo> FilmInfos => this._movies;
-
+        
         public void addMovie(FilmInfo movie)
         {
             this._movies.Add(movie);
@@ -31,6 +32,7 @@ namespace MovieSearch.Model
             clearMovies();
             List<FilmInfo> results = await _apiService.getMoviesByTitle(title);
             _movies.AddRange(results);
+
         }
 
         public async Task loadMoviesByTopRated()

@@ -12,12 +12,18 @@ namespace MovieSearch
     {
         public App()
         {
-             this.InitializeComponent();
-
+             
             //The root page of the application
-            var content = new SearchPage(new Movies());
+            var searchPage = new SearchPage(new Movies());
+            var searchNavigationPage = new NavigationPage(searchPage);
+            searchNavigationPage.Title = "Search for a movie!";
 
-            MainPage = new NavigationPage(content);
+            var tabbar = new TabbedPage();
+
+            tabbar.Children.Add(searchNavigationPage);
+
+
+            this.MainPage = tabbar;
         }
 
         protected override void OnStart()
