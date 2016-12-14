@@ -12,16 +12,27 @@ namespace MovieSearch
     {
         public App()
         {
-             
+
+            var movies = new Movies();
             //The root page of the application
-            var searchPage = new SearchPage(new Movies());
+            var searchPage = new SearchPage(movies);
             var searchNavigationPage = new NavigationPage(searchPage);
-            searchNavigationPage.Title = "Search for a movie!";
+            
+            searchNavigationPage.Title = "SEARCH";
+            searchNavigationPage.BarBackgroundColor = Color.White;
+            searchNavigationPage.BarTextColor = Color.Black;
+            
+
+            var popularPage = new MovieListPage() { BindingContext = movies.loadMoviesByTopRated() };
+            var popularNavigationPage = new NavigationPage(popularPage);
+            popularNavigationPage.Title = "TOP RATED";
+            searchNavigationPage.BarBackgroundColor = Color.White;
+            searchNavigationPage.BarTextColor = Color.Black;
 
             var tabbar = new TabbedPage();
-
+ 
             tabbar.Children.Add(searchNavigationPage);
-
+            tabbar.Children.Add(popularNavigationPage);
 
             this.MainPage = tabbar;
         }

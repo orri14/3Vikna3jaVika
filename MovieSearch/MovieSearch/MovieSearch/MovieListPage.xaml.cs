@@ -13,8 +13,6 @@ namespace MovieSearch
         public MovieListPage()
         {
             this.InitializeComponent();
-
-
         }
 
         private void Listview_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -24,7 +22,10 @@ namespace MovieSearch
                 return;
             }
 
-            this.DisplayAlert(e.SelectedItem.ToString(), string.Empty, "Ok");
+            var movieInfoPage = new MovieInfoPage() { BindingContext = e.SelectedItem };
+
+            this.Navigation.PushAsync(movieInfoPage);
+
         }
     }
 }
