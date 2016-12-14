@@ -12,7 +12,7 @@ namespace MovieSearch
     {
         public App()
         {
-
+            
             var movies = new Movies();
             //The root page of the application
             var searchPage = new SearchPage(movies);

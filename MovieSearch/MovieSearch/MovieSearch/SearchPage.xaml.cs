@@ -62,6 +62,7 @@ namespace MovieSearch
                 var searchResultPage = new MovieListPage() { BindingContext = this._movies };
                 searchResultPage.Title = "Result for: " + _titleEntry.Text;
                 
+                          
                 await this.Navigation.PushAsync(searchResultPage);
             };
 
