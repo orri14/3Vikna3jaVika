@@ -12,12 +12,29 @@ namespace MovieSearch
     {
         public App()
         {
-             this.InitializeComponent();
 
+            var movies = new Movies();
             //The root page of the application
-            var content = new SearchPage(new Movies());
+            var searchPage = new SearchPage(movies);
+            var searchNavigationPage = new NavigationPage(searchPage);
+            
+            searchNavigationPage.Title = "SEARCH";
+            searchNavigationPage.BarBackgroundColor = Color.White;
+            searchNavigationPage.BarTextColor = Color.Black;
+            
 
-            MainPage = new NavigationPage(content);
+            var popularPage = new MovieListPage() { BindingContext = movies.loadMoviesByTopRated() };
+            var popularNavigationPage = new NavigationPage(popularPage);
+            popularNavigationPage.Title = "TOP RATED";
+            searchNavigationPage.BarBackgroundColor = Color.White;
+            searchNavigationPage.BarTextColor = Color.Black;
+
+            var tabbar = new TabbedPage();
+ 
+            tabbar.Children.Add(searchNavigationPage);
+            tabbar.Children.Add(popularNavigationPage);
+
+            this.MainPage = tabbar;
         }
 
         protected override void OnStart()

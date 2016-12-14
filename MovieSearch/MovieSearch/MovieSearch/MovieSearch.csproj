@@ -45,6 +45,12 @@
     <Compile Include="Model\FilmInfo.cs" />
     <Compile Include="Model\Movies.cs" />
     <Compile Include="Model\MyDbSettings.cs" />
+    <Compile Include="MovieInfoPage.xaml.cs">
+      <DependentUpon>MovieInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MovieListPage.xaml.cs">
+      <DependentUpon>MovieListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
@@ -87,6 +93,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SearchPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MovieListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MovieInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
