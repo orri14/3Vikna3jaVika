@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MovieSearch.MovieListPage"
-             Title="Movie list">
+             BackgroundColor="#460000">
   <ScrollView x:Name="scrollview">
     <ListView x:Name="listview"
               ItemsSource="{Binding FilmInfos}"
@@ -12,24 +12,45 @@
         <DataTemplate>
           <!-->TextCell Text="{Binding Title}" -->
           <ViewCell>
-            <Grid Padding="10,5">
+            <Grid 
+              Margin="25"
+            >
               <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
               </Grid.ColumnDefinitions>
-              <Label Grid.Row="0" Grid.Column="0"
-                     Text="{Binding title}"
-                     FontAttributes="Bold"
-                     FontSize="Medium"
-                     TextColor="#1f03e1"/>
-              <Label Grid.Row="1" Grid.Column="0"
-                     Text="{Binding year}"
-                     FontSize="Small"/>
-              <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+              <Label
+                x:Name="title"
+                Grid.Row="0" Grid.Column="0"
+                Text="{Binding title}"
+                FontFamily="HelveticaNeue"
+                FontAttributes="Bold"
+                FontSize="24"
+                TextColor="White"
+              />
+              <Label
+                x:Name="year"
+                Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+                VerticalTextAlignment="Center"
+                Text="{Binding year, StringFormat='({0})'}"
+                FontFamily="HelveticaNeue"
+                FontAttributes="Bold"
+                FontSize="20"
+                TextColor="White"/>
+              <Label
+                x:Name="cast"
+                Grid.Row="1" Grid.Column="0"
+                Text="{Binding castToString}"
+                FontFamily="HelveticaNeue"
+                FontAttributes="Bold"
+                FontSize="18"
+                TextColor="White"/>
+              <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                      Source="{Binding imageName}" />
             </Grid>
           </ViewCell>

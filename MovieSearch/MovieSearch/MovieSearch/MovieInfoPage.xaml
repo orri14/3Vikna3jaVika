@@ -1,55 +1,82 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MovieSearch.MovieInfoPage">
+             x:Class="MovieSearch.MovieInfoPage"
+             BackgroundColor="#460000">
 
-  <Grid ColumnSpacing="5" RowSpacing="5">
+  <Grid  
+    Margin="25">
+    <!-- ColumnSpacing="2" RowSpacing="2" -->
+    
     
     <Grid.RowDefinitions>
+      <RowDefinition Height="2*" />
       <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="3*"/>
+      <RowDefinition Height="2*" />
+      <RowDefinition Height="6*"/>
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*" />
-      <ColumnDefinition Width="*" />
       <ColumnDefinition Width="2*" />
+      <ColumnDefinition Width="2*" />
+      <ColumnDefinition Width="3*" />
     </Grid.ColumnDefinitions>
     
       
     <Label
+      x:Name="title"
       Text ="{Binding title}"
       Grid.Row ="0" Grid.Column="0" Grid.ColumnSpan="2"
-      FontFamily="HelviticaNeue-Bold"
-      FontSize="24"
-      HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+      FontFamily="HelveticaNeue"
+      FontAttributes="Bold"
+      FontSize="28"
+      VerticalTextAlignment="Center" 
+      TextColor="White"
+      HorizontalTextAlignment="Center"
     />
     <Label
-      Text ="{Binding year}"
+      x:Name="year"
+      Text ="{Binding year, StringFormat='({0})'}"
       Grid.Row ="1" Grid.Column="0" Grid.ColumnSpan="2"
-      FontFamily="HelviticaNeue-Bold"
-      FontSize="18"
+      FontFamily="HelveticaNeue"
+      FontAttributes="Bold"               
+      FontSize="20"
+      TextColor="White"
+      HorizontalTextAlignment="Center"
     />
     <Label
-      Text ="{Binding duration}"
+      x:Name="duration"
+      Text ="{Binding duration, StringFormat='{0}  min'}"
       Grid.Row ="2" Grid.Column="0" 
-      FontFamily="HelviticaNeue-Bold"
-      FontSize="14"
+      FontFamily="HelveticaNeue"
+      FontAttributes="Bold"
+      FontSize="18"
+      HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+      TextColor="White"
     />
     <Label
-      Text ="Genres should be here!"
+      x:Name="genres"
+      Text ="{Binding genresToString}"
       Grid.Row ="2" Grid.Column="1" 
-      FontFamily="HelviticaNeue-Bold"
-      FontSize="14"
+      FontFamily="HelveticaNeue"
+      FontAttributes="Bold"
+      FontSize="18"
+      HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+      TextColor="White"
     />
-    
-    <Label Text="Poster should be here!" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" />
     <Label
+      x:Name="poster"
+      Text="Poster should be here!" 
+      Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" 
+    />
+    <Label
+      x:Name="description"
       Text="{Binding description}" 
       Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" 
-      FontFamily="HelviticaNeue-Bold"
-      FontSize="20" />
+      FontFamily="HelveticaNeue"
+      FontAttributes="Bold"
+      FontSize="20" 
+      TextColor="White"
+    />
   </Grid>
 
 </ContentPage>

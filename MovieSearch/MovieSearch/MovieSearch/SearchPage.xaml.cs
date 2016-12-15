@@ -16,26 +16,52 @@ namespace MovieSearch
 
         private Entry _titleEntry = new Entry
         {
-            HorizontalOptions = LayoutOptions.Fill,
+            HorizontalOptions = LayoutOptions.FillAndExpand,
+            VerticalOptions = LayoutOptions.FillAndExpand,
             Placeholder = "Enter a title...",
             PlaceholderColor = Color.White,
             TextColor = Color.White,
-            FontFamily = "HelviticaNeue-Bold",
-            FontSize = 36
+            FontFamily = "HelveticaNeue-Bold",
+            FontSize = 46,
+            
         };
 
         private Button _searchButton = new Button
         {
-            Text = "SEARCH",
-            TextColor = Color.White,
-            FontFamily = "HelviticaNeue-Bold",
-            BorderWidth = 2,
-            FontSize = 46,
-            BorderColor = Color.White,
-            BackgroundColor = Color.FromRgb(30,0,0),
             HorizontalOptions = LayoutOptions.FillAndExpand,
-            VerticalOptions = LayoutOptions.FillAndExpand
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            Text = "SEARCH",
+            TextColor = Color.FromRgb(70,0,0),
+            FontFamily = "HelveticaNeue-Bold",
+            FontSize = 46,
+            BackgroundColor = Color.White,
         };
+
+        private ActivityIndicator _indicator = new ActivityIndicator
+        {
+            HorizontalOptions = LayoutOptions.FillAndExpand,
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            Color = Color.White
+        };
+
+        private async void onSearchButtonClicked(object sender, EventArgs args)
+        {
+            this._indicator.IsRunning = true;
+            this._indicator.IsVisible = true;
+            this._searchButton.IsEnabled = false;
+            this._titleEntry.IsEnabled = false;
+
+            await _movies.loadMoviesByTitle(_titleEntry.Text);
+
+            var searchResultPage = new MovieListPage() { BindingContext = this._movies };
+
+            await this.Navigation.PushAsync(searchResultPage);
+
+            this._indicator.IsRunning = false;
+            this._searchButton.IsEnabled = true;
+            this._titleEntry.IsEnabled = true;
+            this._indicator.IsVisible = false;
+        }
 
         public SearchPage(Movies movies)
         {
@@ -45,27 +71,18 @@ namespace MovieSearch
 
             this.Content = new StackLayout
             {
-                Margin = 30,
-                VerticalOptions = LayoutOptions.Start,
-                Spacing = 10,
+                Margin = 25,
+                Spacing = 25,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 Children =
                                        {
                                            new StackLayout { Children = {this._titleEntry, }, },
                                            this._searchButton,
+                                           this._indicator,
                                        }
             };
 
-            this._searchButton.Clicked += async (sender, args) =>
-            {
-                await _movies.loadMoviesByTitle(_titleEntry.Text);
-
-                var searchResultPage = new MovieListPage() { BindingContext = this._movies };
-                searchResultPage.Title = "Result for: " + _titleEntry.Text;
-                
-                          
-                await this.Navigation.PushAsync(searchResultPage);
-            };
-
+            this._searchButton.Clicked += onSearchButtonClicked;
         }
     }
 }

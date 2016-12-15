@@ -5,6 +5,13 @@
   <Application.Resources>
 
     <!-- Application resource dictionary -->
-
+    <ResourceDictonary>
+      <Color x:Key="MainBackgroundColor" x:FactoryMethod="fromHex">
+        <x:Arguments>
+          <x:String>#460000</x:String>
+        </x:Arguments>  
+      </Color> 
+    </ResourceDictonary>
+    
   </Application.Resources>
 </Application>
