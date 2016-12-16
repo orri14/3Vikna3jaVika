@@ -1,6 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MovieSearch.TopRatedPage">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="MovieSearch.TopRatedPage"
+             BackgroundColor="#460000">
+  <RelativeLayout>
+    <ActivityIndicator
+      x:Name ="_indicator"
+      Color="#D4AF37"
+      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}"
+      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" />
+    <ScrollView x:Name="scrollview">
+      <ListView x:Name="listview"
+                ItemsSource="{Binding FilmInfos}"
+                HasUnevenRows="True"
+                ItemSelected="Listview_OnItemSelected">
+        <ListView.ItemTemplate >
+          <DataTemplate>
+            <ViewCell>
+              <Grid
+                Margin="25"
+                RowSpacing="25"
+            >
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="126"></RowDefinition>
+                  <RowDefinition Height="70"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"></ColumnDefinition>
+                  <ColumnDefinition Width="*"></ColumnDefinition>
+                  <ColumnDefinition Width="154"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label
+                  x:Name="title"
+                  Grid.Row="0" Grid.Column="0"
+                  Text="{Binding title}"
+                  FontFamily="HelveticaNeue"
+                  FontAttributes="Bold"
+                  FontSize="24"
+                  TextColor="#D4AF37"
+                  VerticalTextAlignment="End"
+                  HorizontalTextAlignment="Start"
+              />
+                <Label
+                  x:Name="year"
+                  Grid.Row="0" Grid.Column="1"
+                  Text="{Binding year, StringFormat='({0})'}"
+                  FontFamily="HelveticaNeue"
+                  FontSize="22"
+                  TextColor="White"
+                  VerticalTextAlignment="End"
+                  HorizontalTextAlignment="Start"
+              />
+                <Label
+                  x:Name="cast"
+                  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                  Text="{Binding castToString}"
+                  FontFamily="HelveticaNeue"
+                  FontSize="22"
+                  TextColor="White"
+                  VerticalTextAlignment="Start"
+                  HorizontalTextAlignment="Start"
+              />
+                <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
+                  Source="{Binding imageName}"
+                  Aspect="AspectFill"
+              />
+
+
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </ScrollView>
+  </RelativeLayout>
 </ContentPage>

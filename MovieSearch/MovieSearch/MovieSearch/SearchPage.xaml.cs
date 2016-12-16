@@ -31,17 +31,17 @@ namespace MovieSearch
             HorizontalOptions = LayoutOptions.FillAndExpand,
             VerticalOptions = LayoutOptions.FillAndExpand,
             Text = "SEARCH",
-            TextColor = Color.FromRgb(70,0,0),
+            TextColor = Color.White,
             FontFamily = "HelveticaNeue-Bold",
             FontSize = 46,
-            BackgroundColor = Color.White,
+            BackgroundColor = Color.FromRgb(212, 175, 55),
         };
 
         private ActivityIndicator _indicator = new ActivityIndicator
         {
             HorizontalOptions = LayoutOptions.FillAndExpand,
             VerticalOptions = LayoutOptions.FillAndExpand,
-            Color = Color.White
+            Color = Color.FromRgb(212, 175, 55)
         };
 
         private async void onSearchButtonClicked(object sender, EventArgs args)
@@ -50,17 +50,19 @@ namespace MovieSearch
             this._indicator.IsVisible = true;
             this._searchButton.IsEnabled = false;
             this._titleEntry.IsEnabled = false;
+            
 
             await _movies.loadMoviesByTitle(_titleEntry.Text);
 
             var searchResultPage = new MovieListPage() { BindingContext = this._movies };
 
-            await this.Navigation.PushAsync(searchResultPage);
-
             this._indicator.IsRunning = false;
             this._searchButton.IsEnabled = true;
             this._titleEntry.IsEnabled = true;
             this._indicator.IsVisible = false;
+            
+            await this.Navigation.PushAsync(searchResultPage);
+            
         }
 
         public SearchPage(Movies movies)
@@ -83,6 +85,8 @@ namespace MovieSearch
             };
 
             this._searchButton.Clicked += onSearchButtonClicked;
+            
         }
+
     }
 }

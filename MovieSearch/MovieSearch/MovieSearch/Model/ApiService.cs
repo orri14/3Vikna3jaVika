@@ -47,7 +47,7 @@ namespace MovieSearch
                         film.rating = info.VoteAverage.ToString().Equals("0") ? "-" : info.VoteAverage.ToString();
                         film.description = info.Overview;
 
-                        film.imageName = info.PosterPath;
+                        film.imageName = "http://image.tmdb.org/t/p/w92" + info.PosterPath;
 
                         List<string> genres = new List<string>();
 

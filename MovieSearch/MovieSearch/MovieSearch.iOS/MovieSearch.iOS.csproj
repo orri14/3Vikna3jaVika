@@ -143,6 +143,16 @@
       <Name>MovieSearch</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\TabbarIcons\Gas-Filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\TabbarIcons\Search-Filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\TabbarIcons\Star-Filled-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -12,27 +12,33 @@ namespace MovieSearch
     {
         public App()
         {
-            var movies = new Movies();
             //The root page of the application
-            var searchPage = new SearchPage(movies);
-            var searchNavigationPage = new NavigationPage(searchPage);
-            
-            searchNavigationPage.Title = "SEARCH";
-            searchNavigationPage.BarBackgroundColor = Color.White;
-            searchNavigationPage.BarTextColor = Color.Black;
-            
-            
-            var popularPage = new MovieListPage();
-            var popularNavigationPage = new NavigationPage(popularPage);
-            popularNavigationPage.Title = "TOP RATED";
-            searchNavigationPage.BarBackgroundColor = Color.White;
-            searchNavigationPage.BarTextColor = Color.Black;
+            var searchPage = new SearchPage(new Movies());
+            var searchNavigationPage = new NavigationPage(searchPage) { 
+                Title = "SEARCH",
+                BarBackgroundColor = Color.FromRgb(212, 175, 55),
+                BarTextColor = Color.White
+                //Icon = "TabbarIcons/Search-Filled-50.png";
+            };
+
+            var topRatedPage = new TopRatedPage(new Movies());
+            var topRatedNavigationPage = new NavigationPage(topRatedPage)
+            {
+                Title = "TOP RATED",
+                BarBackgroundColor = Color.FromRgb(212, 175, 55),
+                BarTextColor = Color.White
+                //Icon = "TabbarIcons/Star-Filled-50.png";
+            };
+
+
+            var tabbar = new TabbedPage() { 
+                BarBackgroundColor = Color.FromRgb(212,175,55),
+                BarTextColor = Color.White
+            };
             
 
-            var tabbar = new TabbedPage();
- 
             tabbar.Children.Add(searchNavigationPage);
-            //tabbar.Children.Add(popularNavigationPage);
+            tabbar.Children.Add(topRatedNavigationPage);
 
             this.MainPage = tabbar;
         }

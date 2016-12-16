@@ -5,20 +5,22 @@
              BackgroundColor="#460000">
 
   <Grid  
-    Margin="25">
-    <!-- ColumnSpacing="2" RowSpacing="2" -->
+    Margin="25"
+    RowSpacing="25"
+    ColumnSpacing="25"
+    >
     
     
     <Grid.RowDefinitions>
-      <RowDefinition Height="2*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="2*" />
-      <RowDefinition Height="6*"/>
+      <RowDefinition Height="160" />
+      <RowDefinition Height="30" />
+      <RowDefinition Height="90" />
+      <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="2*" />
-      <ColumnDefinition Width="2*" />
-      <ColumnDefinition Width="3*" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="220" />
     </Grid.ColumnDefinitions>
     
       
@@ -28,29 +30,28 @@
       Grid.Row ="0" Grid.Column="0" Grid.ColumnSpan="2"
       FontFamily="HelveticaNeue"
       FontAttributes="Bold"
-      FontSize="28"
-      VerticalTextAlignment="Center" 
-      TextColor="White"
+      FontSize="36"
+      TextColor="#D4AF37"
       HorizontalTextAlignment="Center"
+      VerticalTextAlignment="End"
     />
     <Label
       x:Name="year"
       Text ="{Binding year, StringFormat='({0})'}"
       Grid.Row ="1" Grid.Column="0" Grid.ColumnSpan="2"
-      FontFamily="HelveticaNeue"
-      FontAttributes="Bold"               
-      FontSize="20"
+      FontFamily="HelveticaNeue"            
+      FontSize="28"
       TextColor="White"
       HorizontalTextAlignment="Center"
+      VerticalTextAlignment="Start"
     />
     <Label
       x:Name="duration"
       Text ="{Binding duration, StringFormat='{0}  min'}"
       Grid.Row ="2" Grid.Column="0" 
       FontFamily="HelveticaNeue"
-      FontAttributes="Bold"
-      FontSize="18"
-      HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+      FontSize="24"
+      HorizontalTextAlignment="End" 
       TextColor="White"
     />
     <Label
@@ -58,25 +59,26 @@
       Text ="{Binding genresToString}"
       Grid.Row ="2" Grid.Column="1" 
       FontFamily="HelveticaNeue"
-      FontAttributes="Bold"
-      FontSize="18"
-      HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+      FontSize="24"
       TextColor="White"
+      HorizontalTextAlignment="Start"
     />
-    <Label
+    <Image
       x:Name="poster"
-      Text="Poster should be here!" 
       Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" 
+      Source="{Binding imageName}"
     />
-    <Label
-      x:Name="description"
-      Text="{Binding description}" 
-      Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" 
-      FontFamily="HelveticaNeue"
-      FontAttributes="Bold"
-      FontSize="20" 
-      TextColor="White"
-    />
+    <ScrollView 
+      Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"> 
+        <Label
+        x:Name="description"
+        Text="{Binding description}" 
+        FontFamily="HelveticaNeue"
+        FontSize="30" 
+        TextColor="White"
+      />
+    </ScrollView>
+    
   </Grid>
 
 </ContentPage>
