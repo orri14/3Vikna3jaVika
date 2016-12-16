@@ -38,7 +38,16 @@ namespace MovieSearch.Model
         public async Task loadMoviesByTopRated()
         {
             clearMovies();
+            
             List<FilmInfo> results = await _apiService.getTopRatedMovies();
+            _movies.AddRange(results);
+        }
+
+        public async Task loadMoviesByPopularity()
+        {
+            clearMovies();
+
+            List<FilmInfo> results = await _apiService.getPopularMovies();
             _movies.AddRange(results);
         }
     }

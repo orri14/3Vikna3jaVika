@@ -15,7 +15,6 @@ namespace MovieSearch
         public MovieInfoPage()
         {
             this.InitializeComponent();
-
         }
     }
 }

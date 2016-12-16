@@ -24,8 +24,11 @@ namespace MovieSearch
             }
 
             var movieInfoPage = new MovieInfoPage() { BindingContext = e.SelectedItem };
-         
+
+            ((ListView)sender).SelectedItem = null;
+
             this.Navigation.PushAsync(movieInfoPage);
+
 
         }
     }

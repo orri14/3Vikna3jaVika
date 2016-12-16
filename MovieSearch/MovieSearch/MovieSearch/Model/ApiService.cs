@@ -5,6 +5,7 @@ using DM.MovieApi;
 using DM.MovieApi.ApiResponse;
 using DM.MovieApi.MovieDb.Movies;
 using MovieSearch.Model;
+using System.Diagnostics;
 
 namespace MovieSearch
 {
@@ -28,6 +29,14 @@ namespace MovieSearch
         public async Task<List<FilmInfo>> getTopRatedMovies()
         {
             ApiSearchResponse<MovieInfo> response = await _movieApi.GetTopRatedAsync();
+            
+            return await formatResponse(response);
+        }
+
+        public async Task<List<FilmInfo>> getPopularMovies()
+        {
+            ApiSearchResponse<MovieInfo> response = await _movieApi.GetPopularAsync();
+
             return await formatResponse(response);
         }
 
@@ -106,6 +115,7 @@ namespace MovieSearch
                         film.cast = cast;
 
                         result.Add(film);
+                       
                     }
                 }
             }

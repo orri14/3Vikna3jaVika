@@ -52,8 +52,8 @@
     <Compile Include="SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TopRatedPage.xaml.cs">
-      <DependentUpon>TopRatedPage.xaml</DependentUpon>
+    <Compile Include="FilterListPage.xaml.cs">
+      <DependentUpon>FilterListPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +66,9 @@
     <Reference Include="DM.MovieApi, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\TheMovieDbWrapper.0.8.1\lib\netstandard1.1\DM.MovieApi.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v7.0\Mono.Android.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
@@ -106,7 +109,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="TopRatedPage.xaml">
+    <EmbeddedResource Include="FilterListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

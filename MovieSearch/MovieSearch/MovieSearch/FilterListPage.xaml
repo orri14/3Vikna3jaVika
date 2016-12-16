@@ -1,19 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MovieSearch.TopRatedPage"
+             x:Class="MovieSearch.FilterListPage"
              BackgroundColor="#460000">
   <RelativeLayout>
     <ActivityIndicator
       x:Name ="_indicator"
       Color="#D4AF37"
-      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}"
-      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" />
-    
-          <ListView x:Name="listview"
-              ItemsSource="{Binding FilmInfos}"
-              HasUnevenRows="True"
-              ItemSelected="Listview_OnItemSelected">
+      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.45}"
+      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.45}" />  
+    <ListView x:Name="listview"
+        ItemsSource="{Binding FilmInfos}"
+        HasUnevenRows="True"
+        IsPullToRefreshEnabled="True"
+        ItemSelected="Listview_OnItemSelected"
+        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+    >
       <ListView.ItemTemplate >
         <DataTemplate>
           <ViewCell>
@@ -65,14 +68,11 @@
               <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                 Source="{Binding imageName}" 
                 Aspect="AspectFill" 
-              />
-              
-              
+              />       
             </Grid>
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-
   </RelativeLayout>
 </ContentPage>
