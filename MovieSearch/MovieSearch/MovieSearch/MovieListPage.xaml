@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MovieSearch.MovieListPage"
              BackgroundColor="#460000">
-  <ScrollView x:Name="scrollview">
+
     <ListView x:Name="listview"
               ItemsSource="{Binding FilmInfos}"
               HasUnevenRows="True"
@@ -21,7 +21,7 @@
                 <RowDefinition Height="70"></RowDefinition>
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="154"></ColumnDefinition>
               </Grid.ColumnDefinitions>
@@ -44,7 +44,7 @@
                 FontSize="22"
                 TextColor="White"
                 VerticalTextAlignment="End"
-                HorizontalTextAlignment="Start"
+                HorizontalTextAlignment="Center"
               />
               <Label
                 x:Name="cast"
@@ -67,5 +67,5 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-  </ScrollView>
+ 
 </ContentPage>

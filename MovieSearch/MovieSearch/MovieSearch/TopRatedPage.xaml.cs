@@ -32,15 +32,8 @@ namespace MovieSearch
 
             this._indicator.IsRunning = false;
             this._indicator.IsVisible = false;
-
+            
             this.BindingContext = _movies;
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            _movies.clearMovies();
         }
 
         private void Listview_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -53,7 +46,7 @@ namespace MovieSearch
             var movieInfoPage = new MovieInfoPage() { BindingContext = e.SelectedItem };
 
             this.Navigation.PushAsync(movieInfoPage);
-
+            
         }
 
     }
